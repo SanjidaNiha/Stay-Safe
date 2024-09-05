@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Expert Articles</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>All Expert Articles</h1>
+        <a href="index.html" class="back-button">Back to Home</a>
+    </header>
+    <main>
+        <section id="articles">
+            <div id="allArticleList" class="article-list">
+                <!-- All articles will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script> <!-- Link to your JS file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const allArticleList = document.getElementById('allArticleList');
+
+            // Expert articles array (same as on the main page)
+            const expertArticles = [
+                {
+                    title: "How to Remain Calm in an Emergency",
+                    author: "Dustin W. Ballard MD, MBE",
+                    excerpt: "Buddhist practices of mindfulness and cyclical breathing can help.",
+                    link: "https://www.psychologytoday.com/intl/blog/standing-strong/202302/how-to-remain-calm-in-an-emergency?msockid=26d2b90187d26d050a3dad6386d36c14"
+                },
+                {
+                    title: "Amazing Personal Safety Tips That Will Change Your Life",
+                    author: "Bill Stanton",
+                    excerpt: "Be prepared, not scared.",
+                    link: "https://bestlifeonline.com/safety-tips/"
+                },
+                {
+                    title: "Rethinking Emergency Response to Mental Health Crises",
+                    author: "Ed Ergenzinger J.D., Ph.D.",
+                    excerpt: "Mental health crisis response services reduce officer injuries by up to 80% while saving lives.",
+                    link: "https://www.psychologytoday.com/us/blog/night-sweats-and-delusions-grandeur/202202/rethinking-emergency-response-mental-health-crises?msockid=26d2b90187d26d050a3dad6386d36c14"
+                },
+                // Add more articles as needed
+            ];
+
+            // Function to load and display all expert articles
+            function loadAllArticles() {
+                expertArticles.forEach(article => {
+                    const articleItem = document.createElement('div');
+                    articleItem.classList.add('article-item');
+
+                    // Add article details using template literals for better readability
+                    articleItem.innerHTML = `
+                        <h3>${article.title}</h3>
+                        <h4>by ${article.author}</h4>
+                        <p>${article.excerpt}</p>
+                        <a href="${article.link}" class="read-more" target="_blank">Read More</a>
+                    `;
+
+                    allArticleList.appendChild(articleItem);
+                });
+            }
+
+            // Load all expert articles on page load
+            loadAllArticles();
+        });
+    </script>
+</body>
+</html>
